@@ -1,0 +1,31 @@
+<form>
+  <input type="date" [(ngModel)]="dateTimeModel().date" name="date">
+  <input type="time" [(ngModel)]="dateTimeModel().time" name="time">
+  <button (click)="setNow()">now</button>
+  {{dateTime()}}
+</form>
+
+<form>
+  <input type="text" [(ngModel)]="localeModel().locale" name="locale">
+  <select [(ngModel)]="localeModel().numberingSystem" name="numberingSystem">
+    <option [value]="null">None</option>
+    @for (numberingSystem of numberingSystemOptions; track numberingSystem) {
+      <option [value]="numberingSystem">{{numberingSystem}}</option>
+    }
+  </select>
+  <select [(ngModel)]="localeModel().calendar" name="calendar">
+    <option [value]="null">None</option>
+    @for (calendar of calendarOptions; track calendar) {
+      <option [value]="calendar">{{calendar}}</option>
+    }
+  </select>
+  <select [(ngModel)]="localeModel().hourCycle" name="hourCycle">
+    <option [value]="null">None</option>
+    @for (hourCycle of hourCycleOptions; track hourCycle) {
+      <option [value]="hourCycle">{{hourCycle}}</option>
+    }
+  </select>
+
+  {{formatted()}}
+  <button (click)="format()">Format</button>
+</form>
